@@ -3,7 +3,7 @@
 import Foundation
 
 struct ConnectedPair {
-    var key: String
-    var value: String
+    var variant: String
+    var answer: String
     var isCorrect: Bool
 }
