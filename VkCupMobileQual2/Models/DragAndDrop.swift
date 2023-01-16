@@ -66,6 +66,6 @@ extension DragAndDrop {
             variants: [
                 "Я", "Не я", "Ты"
             ]
-        ),
+        )
     ]
 }

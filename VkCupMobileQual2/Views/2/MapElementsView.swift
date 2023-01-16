@@ -41,14 +41,22 @@ struct MapElementsView: View {
                     VStack {
                         ForEach(mapElements.variants, id: \.self) { variant in
                             Text(variant)
-                                .foregroundColor(connectedPairs.contains(where: { $0.variant == variant }) ? .white : .black)
+                                .foregroundColor(
+                                    connectedPairs.contains(where: { $0.variant == variant }) ? .white : .black
+                                )
                                 .padding(5)
                                 .if(correct == nil) {
                                     $0
                                         .gesture(dragGesture(variant: variant))
-                                        .background(connectedPairs.contains(where: { $0.variant == variant }) ? .black : .white)
+                                        .background(
+                                            connectedPairs.contains(where: { $0.variant == variant }) ? .black : .white
+                                        )
                                 } else: {
-                                    $0.background(connectedPairs.first(where: { $0.variant == variant })!.isCorrect ? .green : .red)
+                                    $0.background(
+                                        connectedPairs.first(where: { $0.variant == variant })!.isCorrect
+                                        ? .green
+                                        : .red
+                                    )
                                 }
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                                 .contentShape(RoundedRectangle(cornerRadius: 15))
@@ -64,12 +72,18 @@ struct MapElementsView: View {
                     VStack {
                         ForEach(mapElements.answers, id: \.self) { answer in
                             Text(answer)
-                                .foregroundColor(connectedPairs.contains(where: { $0.answer == answer }) ? .white : .black)
+                                .foregroundColor(
+                                    connectedPairs.contains(where: { $0.answer == answer }) ? .white : .black
+                                )
                                 .padding(5)
                                 .if(correct != nil) {
-                                    $0.background(connectedPairs.first(where: { $0.answer == answer })!.isCorrect ? .green : .red)
+                                    $0.background(
+                                        connectedPairs.first(where: { $0.answer == answer })!.isCorrect ? .green : .red
+                                    )
                                 } else: {
-                                    $0.background(connectedPairs.contains(where: { $0.answer == answer }) ? .black : .white)
+                                    $0.background(
+                                        connectedPairs.contains(where: { $0.answer == answer }) ? .black : .white
+                                    )
                                 }
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                                 .contentShape(RoundedRectangle(cornerRadius: 15))

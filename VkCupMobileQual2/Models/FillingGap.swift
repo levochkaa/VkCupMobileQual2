@@ -41,6 +41,6 @@ extension FillingGap {
         FillingGap(
             text: "Естественно, в конкурсе от ВК выиграет/ю ___",
             gaps: ["Я"]
-        ),
+        )
     ]
 }

@@ -33,7 +33,7 @@ struct DragAndDropView: View {
                     }
                     .transition(.scale)
                     .if(part.text == "___") {
-                        $0.dropDestination(for: String.self) { items, location in
+                        $0.dropDestination(for: String.self) { items, _ in
                             guard let firstItem = items.first else { return false }
                             
                             replaceText(for: index, with: firstItem)

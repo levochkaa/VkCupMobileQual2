@@ -48,4 +48,3 @@ struct OffsetScrollView<Content: View>: View {
         }
     }
 }
-

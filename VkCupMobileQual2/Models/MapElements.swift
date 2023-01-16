@@ -66,6 +66,6 @@ extension MapElements {
             variants: ["Craiyon", "ChatGPT", "Midjourney"],
             answers: ["Smith & Nephew", "OpenAI", "Boris Dayma"],
             rightAnswers: ["Midjourney": "Smith & Nephew", "ChatGPT": "OpenAI", "Craiyon": "Boris Dayma"]
-        ),
+        )
     ]
 }

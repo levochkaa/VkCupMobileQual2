@@ -33,6 +33,7 @@
 		DF972325296F36710019EC9A /* DragAndDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF972324296F36710019EC9A /* DragAndDrop.swift */; };
 		DF972328296F4B2F0019EC9A /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF972327296F4B2F0019EC9A /* CustomLayout.swift */; };
 		DF97232B296F4C340019EC9A /* DragAndDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97232A296F4C340019EC9A /* DragAndDropView.swift */; };
+		DFA4E5AA2975800F003B43EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DFA4E5A92975800F003B43EF /* .swiftlint.yml */; };
 		DFADF20E29700E0700B45765 /* OffsetScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADF20D29700E0700B45765 /* OffsetScrollView.swift */; };
 		DFADF2102970122900B45765 /* FillingGap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADF20F2970122900B45765 /* FillingGap.swift */; };
 		DFADF2122970129C00B45765 /* TextPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADF2112970129C00B45765 /* TextPart.swift */; };
@@ -70,6 +71,7 @@
 		DF972324296F36710019EC9A /* DragAndDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDrop.swift; sourceTree = "<group>"; };
 		DF972327296F4B2F0019EC9A /* CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		DF97232A296F4C340019EC9A /* DragAndDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropView.swift; sourceTree = "<group>"; };
+		DFA4E5A92975800F003B43EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DFADF20D29700E0700B45765 /* OffsetScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetScrollView.swift; sourceTree = "<group>"; };
 		DFADF20F2970122900B45765 /* FillingGap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillingGap.swift; sourceTree = "<group>"; };
 		DFADF2112970129C00B45765 /* TextPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPart.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		DF9722EF296EF0380019EC9A = {
 			isa = PBXGroup;
 			children = (
+				DFA4E5A92975800F003B43EF /* .swiftlint.yml */,
 				DFF3A88629747A1D0093AD91 /* README.md */,
 				DF9722FA296EF0380019EC9A /* VkCupMobileQual2 */,
 				DF9722F9296EF0380019EC9A /* Products */,
@@ -252,6 +255,7 @@
 				DF9722F4296EF0380019EC9A /* Sources */,
 				DF9722F5296EF0380019EC9A /* Frameworks */,
 				DF9722F6296EF0380019EC9A /* Resources */,
+				DFA4E5A829757FA0003B43EF /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -300,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA4E5AA2975800F003B43EF /* .swiftlint.yml in Resources */,
 				DFF3A88729747A1D0093AD91 /* README.md in Resources */,
 				DF972303296EF0390019EC9A /* Preview Assets.xcassets in Resources */,
 				DF972300296EF0390019EC9A /* Assets.xcassets in Resources */,
@@ -307,6 +312,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DFA4E5A829757FA0003B43EF /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF9722F4296EF0380019EC9A /* Sources */ = {

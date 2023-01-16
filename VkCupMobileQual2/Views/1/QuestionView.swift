@@ -33,7 +33,6 @@ struct QuestionView: View {
             
             Spacer()
             
-            
             Group {
                 if tapped {
                     Group {

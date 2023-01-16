@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+// swiftlint:disable identifier_name
 struct CustomLayout: Layout {
     
     let size: CGSize = UIScreen.main.bounds.size

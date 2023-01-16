@@ -24,7 +24,9 @@ struct SecondTypeView: View {
     
     func addMapElements() {
         addingMapElements = true
-        let copy = MapElements.exampleData.map { MapElements(variants: $0.variants, answers: $0.answers, rightAnswers: $0.rightAnswers) }
+        let copy = MapElements.exampleData.map {
+            MapElements(variants: $0.variants, answers: $0.answers, rightAnswers: $0.rightAnswers)
+        }
         data.append(contentsOf: copy)
         addingMapElements = false
     }

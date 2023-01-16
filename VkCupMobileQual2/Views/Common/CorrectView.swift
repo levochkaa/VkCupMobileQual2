@@ -21,4 +21,3 @@ struct CorrectView: View {
         .transition(.scale.combined(with: .opacity))
     }
 }
-
