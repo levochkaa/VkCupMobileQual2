@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct AnswerPosition {
-    var proxy: CustomGeometryProxy
+struct AnswerFrame {
     var name: String
+    var frame: CGRect
 }

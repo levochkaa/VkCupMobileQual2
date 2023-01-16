@@ -9,13 +9,12 @@
 /* Begin PBXBuildFile section */
 		DF7AC2542970317600D77ACB /* MapElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC2532970317600D77ACB /* MapElements.swift */; };
 		DF7AC2562970327900D77ACB /* MapElementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC2552970327900D77ACB /* MapElementsView.swift */; };
-		DF7AC258297042F700D77ACB /* GeometryProxyPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC257297042F700D77ACB /* GeometryProxyPreferenceKey.swift */; };
-		DF7AC25A2970433F00D77ACB /* CustomGeometryProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC2592970433F00D77ACB /* CustomGeometryProxy.swift */; };
+		DF7AC258297042F700D77ACB /* FramePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC257297042F700D77ACB /* FramePreferenceKey.swift */; };
 		DF7AC25E2970491400D77ACB /* View+readProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC25D2970491400D77ACB /* View+readProxy.swift */; };
 		DF7AC261297050FC00D77ACB /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC260297050FC00D77ACB /* SizePreferenceKey.swift */; };
 		DF7AC2632970511300D77ACB /* View+readSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC2622970511300D77ACB /* View+readSize.swift */; };
 		DF7AC26529706BBA00D77ACB /* LinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC26429706BBA00D77ACB /* LinePath.swift */; };
-		DF7AC26729706BCB00D77ACB /* AnswerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC26629706BCB00D77ACB /* AnswerPosition.swift */; };
+		DF7AC26729706BCB00D77ACB /* AnswerFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC26629706BCB00D77ACB /* AnswerFrame.swift */; };
 		DF9722FC296EF0380019EC9A /* VkCupMobileQual2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9722FB296EF0380019EC9A /* VkCupMobileQual2App.swift */; };
 		DF9722FE296EF0380019EC9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9722FD296EF0380019EC9A /* ContentView.swift */; };
 		DF972300296EF0390019EC9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF9722FF296EF0390019EC9A /* Assets.xcassets */; };
@@ -46,13 +45,12 @@
 /* Begin PBXFileReference section */
 		DF7AC2532970317600D77ACB /* MapElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapElements.swift; sourceTree = "<group>"; };
 		DF7AC2552970327900D77ACB /* MapElementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapElementsView.swift; sourceTree = "<group>"; };
-		DF7AC257297042F700D77ACB /* GeometryProxyPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryProxyPreferenceKey.swift; sourceTree = "<group>"; };
-		DF7AC2592970433F00D77ACB /* CustomGeometryProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGeometryProxy.swift; sourceTree = "<group>"; };
+		DF7AC257297042F700D77ACB /* FramePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramePreferenceKey.swift; sourceTree = "<group>"; };
 		DF7AC25D2970491400D77ACB /* View+readProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+readProxy.swift"; sourceTree = "<group>"; };
 		DF7AC260297050FC00D77ACB /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		DF7AC2622970511300D77ACB /* View+readSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+readSize.swift"; sourceTree = "<group>"; };
 		DF7AC26429706BBA00D77ACB /* LinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePath.swift; sourceTree = "<group>"; };
-		DF7AC26629706BCB00D77ACB /* AnswerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerPosition.swift; sourceTree = "<group>"; };
+		DF7AC26629706BCB00D77ACB /* AnswerFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerFrame.swift; sourceTree = "<group>"; };
 		DF9722F8296EF0380019EC9A /* VkCupMobileQual2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkCupMobileQual2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF9722FB296EF0380019EC9A /* VkCupMobileQual2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkCupMobileQual2App.swift; sourceTree = "<group>"; };
 		DF9722FD296EF0380019EC9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,9 +155,8 @@
 				DFADF20F2970122900B45765 /* FillingGap.swift */,
 				DFADF2112970129C00B45765 /* TextPart.swift */,
 				DF7AC2532970317600D77ACB /* MapElements.swift */,
-				DF7AC2592970433F00D77ACB /* CustomGeometryProxy.swift */,
 				DF7AC26429706BBA00D77ACB /* LinePath.swift */,
-				DF7AC26629706BCB00D77ACB /* AnswerPosition.swift */,
+				DF7AC26629706BCB00D77ACB /* AnswerFrame.swift */,
 				DFF3A8842974765D0093AD91 /* ConnectedPair.swift */,
 			);
 			path = Models;
@@ -169,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				DF972318296EFCEF0019EC9A /* ScrollOffsetPreferenceKey.swift */,
-				DF7AC257297042F700D77ACB /* GeometryProxyPreferenceKey.swift */,
+				DF7AC257297042F700D77ACB /* FramePreferenceKey.swift */,
 				DF7AC260297050FC00D77ACB /* SizePreferenceKey.swift */,
 			);
 			path = PreferenceKeys;
@@ -325,7 +322,7 @@
 				DF972321296F21280019EC9A /* Color.swift in Sources */,
 				DF972319296EFCEF0019EC9A /* ScrollOffsetPreferenceKey.swift in Sources */,
 				DF972311296EF26F0019EC9A /* FourthTypeView.swift in Sources */,
-				DF7AC258297042F700D77ACB /* GeometryProxyPreferenceKey.swift in Sources */,
+				DF7AC258297042F700D77ACB /* FramePreferenceKey.swift in Sources */,
 				DF97230D296EF2450019EC9A /* SecondTypeView.swift in Sources */,
 				DF9722FE296EF0380019EC9A /* ContentView.swift in Sources */,
 				DF97231B296F07710019EC9A /* Question.swift in Sources */,
@@ -337,10 +334,9 @@
 				DF9722FC296EF0380019EC9A /* VkCupMobileQual2App.swift in Sources */,
 				DFF3A8852974765D0093AD91 /* ConnectedPair.swift in Sources */,
 				DFADF217297017E800B45765 /* FillingGapView.swift in Sources */,
-				DF7AC26729706BCB00D77ACB /* AnswerPosition.swift in Sources */,
+				DF7AC26729706BCB00D77ACB /* AnswerFrame.swift in Sources */,
 				DFADF2102970122900B45765 /* FillingGap.swift in Sources */,
 				DF972328296F4B2F0019EC9A /* CustomLayout.swift in Sources */,
-				DF7AC25A2970433F00D77ACB /* CustomGeometryProxy.swift in Sources */,
 				DF97230F296EF2590019EC9A /* ThirdTypeView.swift in Sources */,
 				DF972323296F22EA0019EC9A /* View+if.swift in Sources */,
 				DF7AC25E2970491400D77ACB /* View+readProxy.swift in Sources */,

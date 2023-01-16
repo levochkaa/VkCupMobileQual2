@@ -3,7 +3,8 @@
 import Foundation
 
 struct LinePath: Identifiable {
-    var id: String
+    var id = UUID()
+    var variant: String
     var from: CGPoint
     var to: CGPoint
     var isCorrect = false

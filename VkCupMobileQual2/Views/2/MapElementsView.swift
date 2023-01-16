@@ -2,11 +2,10 @@
 
 import SwiftUI
 
-// TODO: rewrite
-
 struct MapElement: Identifiable {
     var id = UUID()
     var variant: String
+    var answer: String
     var rightAnswer: String
     var guessAnswer: String = ""
     var from: CGPoint = .zero
@@ -23,12 +22,11 @@ struct MapElementsView: View {
     
     @State var elements = [MapElement]()
     
-    @State var positions = [AnswerPosition]()
+    @State var positions = [AnswerFrame]()
     @State var linePaths = [LinePath]()
     @State var connected = [String: String]()
     @State var connectedPairs = [ConnectedPair]()
     
-    @State var boxSize: CGSize = .zero
     @State var correct: Bool?
     
     let offset: CGFloat = 17
@@ -36,36 +34,38 @@ struct MapElementsView: View {
     init(mapElements: MapElements) {
         self._mapElements = State(initialValue: mapElements)
         
-        self._elements.wrappedValue = mapElements.variants.enumerated().map {
-            MapElement(variant: $1, rightAnswer: mapElements.answers[$0])
-        }
+        self._elements = State(initialValue: mapElements.variants.enumerated().map {
+            MapElement(variant: $1, answer: mapElements.answers[$0], rightAnswer: mapElements.rightAnswers[$1]!)
+        })
     }
     
-    func dragGesture(id: String) -> some Gesture {
+    func dragGesture(variant: String) -> some Gesture {
         DragGesture(coordinateSpace: .named(mapElements.id))
             .onChanged { value in
                 let location = CGPoint(x: value.location.x - offset, y: value.location.y - offset)
-                if let index = linePaths.firstIndex(where: { $0.id == id }) {
+                
+                if let index = linePaths.firstIndex(where: { $0.variant == variant }) {
                     linePaths[index].to = location
                 } else {
                     let startLocation = CGPoint(x: value.startLocation.x - offset, y: value.startLocation.y - offset)
-                    linePaths.append(LinePath(id: id, from: startLocation, to: location))
+                    linePaths.append(LinePath(variant: variant, from: startLocation, to: location))
                 }
             }
             .onEnded { value in
-                for position in positions where position.proxy.frame.contains(value.location) {
+                
+                for position in positions where position.frame.contains(value.location) {
                     if !connected.contains(where: { $0.value == position.name }) {
                         withAnimation {
-                            connected[id] = position.name
+                            connected[variant] = position.name
                             connectedPairs.append(
                                 ConnectedPair(
-                                    key: id,
+                                    key: variant,
                                     value: position.name,
-                                    isCorrect: connected[id] == mapElements.rightAnswers[id]
+                                    isCorrect: connected[variant] == mapElements.rightAnswers[variant]
                                 )
                             )
-                            if let index = linePaths.firstIndex(where: { $0.id == id }) {
-                                linePaths[index].isCorrect = connected[id] == mapElements.rightAnswers[id]
+                            if let index = linePaths.firstIndex(where: { $0.variant == variant }) {
+                                linePaths[index].isCorrect = connected[variant] == mapElements.rightAnswers[variant]
                             }
                         }
                         if connected.count == mapElements.answers.count {
@@ -75,10 +75,10 @@ struct MapElementsView: View {
                     }
                 }
                 withAnimation {
-                    linePaths.removeAll(where: { $0.id == id })
-                    guard let index = connected.index(forKey: id) else { return }
+                    linePaths.removeAll(where: { $0.variant == variant })
+                    guard let index = connected.index(forKey: variant) else { return }
                     connected.remove(at: index)
-                    connectedPairs.removeAll(where: { $0.key == id })
+                    connectedPairs.removeAll(where: { $0.key == variant })
                 }
             }
     }
@@ -86,6 +86,14 @@ struct MapElementsView: View {
     var body: some View {
         VStack {
             ZStack {
+                ForEach(linePaths) { linePath in
+                    Path { path in
+                        path.move(to: linePath.from)
+                        path.addLine(to: linePath.to)
+                    }
+                    .stroke(correct == nil ? .black : linePath.isCorrect ? .green : .red, lineWidth: 1)
+                }
+                
                 HStack {
                     Spacer()
                     
@@ -95,7 +103,7 @@ struct MapElementsView: View {
                                 .foregroundColor(connected[variant] != nil ? .white : .black)
                                 .padding(5)
                                 .if(correct == nil) {
-                                    $0.gesture(dragGesture(id: variant))
+                                    $0.gesture(dragGesture(variant: variant))
                                 }
                                 .if(correct != nil) {
                                     $0.background(connectedPairs.first(where: { $0.key == variant })!.isCorrect ? .green : .red)
@@ -127,27 +135,14 @@ struct MapElementsView: View {
                                     RoundedRectangle(cornerRadius: 15)
                                         .stroke(lineWidth: 1)
                                 }
-                                .readProxy(in: mapElements.id) { geometryProxy in
-                                    let newPosition = AnswerPosition(proxy: geometryProxy, name: variant)
-                                    positions.append(newPosition)
+                                .readFrame(in: mapElements.id) { frame in
+                                    positions.append(AnswerFrame(name: variant, frame: frame))
                                 }
                         }
                     }
                     
                     Spacer()
                 }
-                .readSize { boxSize = $0 }
-                
-                ForEach(linePaths) { linePath in
-                    Path { path in
-                        path.move(to: linePath.from)
-                        path.addLine(to: linePath.to)
-                    }
-                    .stroke(correct == nil ? .black : linePath.isCorrect ? .green : .red, lineWidth: 1)
-                }
-            }
-            .if(boxSize != .zero) {
-                $0.frame(width: boxSize.width, height: boxSize.height)
             }
             .padding()
             .coordinateSpace(name: mapElements.id)
